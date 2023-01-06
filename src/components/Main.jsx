@@ -4,7 +4,8 @@ import Video from "./Video";
 import Filter from "./Filter";
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api/videos";
+// const API_URL = "http://localhost:5000/api/videos";
+const API_URL = "http://157.245.8.146";
 
 // Gets thumbnail url, current uploader name and title
 // https://www.youtube.com/oembed?url=http://www.youtube.com/watch?v=tZcBn5EaVmI&format=json

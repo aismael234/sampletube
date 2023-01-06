@@ -67,6 +67,7 @@
 .buttons-container {
   display: flex;
   column-gap: 25px;
+  justify-content: flex-end;
 }
 
 #reset {

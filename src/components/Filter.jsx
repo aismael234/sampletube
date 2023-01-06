@@ -92,7 +92,7 @@ export default function Filter(props) {
             name="reset"
             onClick={() => {
               props.handleForm();
-              props.toggleIsValidFilter();
+              if (props.isValidFilter === false) props.toggleIsValidFilter();
             }}
           >
             Reset
