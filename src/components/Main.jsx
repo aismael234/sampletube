@@ -81,7 +81,7 @@ export default function Main() {
   // Load video on initial page load
   const fetchInitialVideo = async () => {
     const data = await axios.get(API_URL);
-    console.log(data);
+    //console.log(data);
     const videoData = data.data[0];
     //console.log(videoData);
     setVideo({
