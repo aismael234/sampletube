@@ -4,7 +4,7 @@ import Video from "./Video";
 import Filter from "./Filter";
 import axios from "axios";
 
-const API_URL = "http://sampletube-backend-production.up.railway.app";
+const API_URL = "https://sampletube-backend-production.up.railway.app";
 // const API_URL = "https://sampletube-backend-production.up.railway.app";
 
 // Gets thumbnail url, current uploader name and title
