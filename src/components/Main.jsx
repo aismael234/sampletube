@@ -26,6 +26,12 @@ export default function Main() {
     keywords: "",
   });
 
+  const [isValidFilter, setIsValidFilter] = React.useState(true);
+
+  function toggleIsValidFilter() {
+    setIsValidFilter((prevState) => !prevState);
+  }
+
   // Handle form data changes
   function handleForm(event) {
     const { name, type, value } = event.target;
@@ -61,12 +67,14 @@ export default function Main() {
     //console.log(data);
     const videoData = data.data[0];
     //console.log(videoData);
-    if (videoData)
+    if (videoData) {
+      if (isValidFilter === false) toggleIsValidFilter();
       setVideo({
         ...videoData,
         view_count: videoData.view_count + " views",
       });
-    else {
+    } else {
+      if (isValidFilter === true) toggleIsValidFilter();
     }
   }
 
@@ -101,6 +109,8 @@ export default function Main() {
           form={form}
           handleForm={() => handleForm(event)}
           onSubmit={handleSubmit}
+          isValidFilter={isValidFilter}
+          toggleIsValidFilter={toggleIsValidFilter}
         />
       </div>
     </main>

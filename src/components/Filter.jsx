@@ -12,38 +12,21 @@ export default function Filter(props) {
 
   function handleSubmitBtn(event) {
     event.preventDefault();
-    //console.log(`From filter component: ${JSON.stringify(event.target.value)}`);
     props.onSubmit();
   }
 
-  // function handleForm(event) {
-  //   const { name, type, value } = event.target;
-
-  //   if (type === "number") {
-  //     setForm((prevForm) => ({
-  //       ...prevForm,
-  //       [name]: value.replace(/\D/g, ""),
-  //     }));
-  //   } else if (type === "date" || type === "text") {
-  //     setForm((prevForm) => ({
-  //       ...prevForm,
-  //       [name]: event.target.value,
-  //     }));
-  //   } else if (type === "reset") {
-  //     setForm({
-  //       minimum_views: "",
-  //       maximum_views: "",
-  //       date_from: "",
-  //       date_to: "",
-  //       keywords: "",
-  //     });
-  //   }
-
-  //   console.log(form);
-  // }
-
   return (
     <form className="filter">
+      <h6 className="filter-error-message">
+        <span
+          className={
+            props.isValidFilter ? "filter-error-off" : "filter-error-on"
+          }
+        >
+          No video matches the given parameters
+        </span>
+      </h6>
+
       <h4 style={{ alignSelf: "center", margin: "0", marginBottom: "5px" }}>
         Filter
       </h4>
@@ -107,7 +90,10 @@ export default function Filter(props) {
             type="reset"
             id="reset"
             name="reset"
-            onClick={props.handleForm}
+            onClick={() => {
+              props.handleForm();
+              props.toggleIsValidFilter();
+            }}
           >
             Reset
           </button>

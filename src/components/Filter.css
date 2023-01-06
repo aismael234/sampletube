@@ -10,6 +10,7 @@
   padding: 30px;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.25);
   white-space: nowrap;
+  position: relative;
 }
 
 @media screen and (max-width: 649px) {
@@ -38,7 +39,7 @@
   justify-content: flex-end;
   align-items: center;
   font-size: 12px;
-  font-weight: 400;
+  font-weight: 300;
   font-family: "Roboto", "Inter", "Avenir", "Helvetica", "Arial", "sans-serif";
 }
 .input-row input {
@@ -57,9 +58,10 @@
 #input-keywords {
 }
 
-label #keywords {
+#keywords {
   vertical-align: top;
   resize: vertical;
+  max-height: 200px;
 }
 
 .buttons-container {
@@ -84,4 +86,19 @@ label #keywords {
   border: none;
   padding: 10px;
   color: white;
+}
+
+.filter-error-message {
+  align-self: center;
+  margin: 0;
+  position: absolute;
+  top: 10px;
+}
+.filter-error-off {
+  display: none;
+  color: red;
+}
+.filter-error-on {
+  display: block;
+  color: red;
 }
