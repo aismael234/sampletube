@@ -13,16 +13,6 @@
   position: relative;
 }
 
-@media screen and (max-width: 649px) {
-  .filter {
-    align-self: stretch;
-    align-items: center;
-    margin: 10px;
-  }
-}
-@media screen and (max-width: 360px) {
-}
-
 .inputs-container {
   display: flex;
   flex-direction: column;
@@ -102,4 +92,24 @@
 .filter-error-on {
   display: block;
   color: red;
+}
+
+@media screen and (max-width: 649px) {
+  .filter {
+    align-self: stretch;
+    align-items: center;
+    margin: 10px;
+  }
+}
+
+@media screen and (min-width: 300px) {
+  .input-row {
+    font-size: calc(10px + 2 * ((100vw - 300px) / 300));
+  }
+}
+
+@media screen and (min-width: 650px) {
+  .input-row {
+    font-size: 12px;
+  }
 }

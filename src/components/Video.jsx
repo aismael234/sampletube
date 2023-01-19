@@ -11,6 +11,7 @@ export default function Video(props) {
   return (
     <div className="video-card">
       <iframe
+        id="video"
         className="video"
         src={`https://www.youtube-nocookie.com/embed/${props.video.id}?autoplay=1`}
         title="YouTube video player"
