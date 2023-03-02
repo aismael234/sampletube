@@ -1,6 +1,5 @@
 import React from "react";
 import "./Video.css";
-import turntable from "../assets/turntable.svg";
 
 export default function Video(props) {
   /* 
@@ -8,20 +7,28 @@ export default function Video(props) {
         and "allow='autoplay'" attribute.
     */
 
+  let info = {
+    title: "Mariya",
+    uploader: "Family Circle - Topic",
+    view_count: "2,096 views",
+    upload_date: "7 years ago",
+  };
+
   return (
     <div className="video-card">
-      <iframe
-        id="video"
-        className="video"
-        src={`https://www.youtube-nocookie.com/embed/${props.video.id}?autoplay=1`}
-        title="YouTube video player"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-        playsInline="1"
-      ></iframe>
+      <div className="video-container">
+        <iframe
+          id="video"
+          className="video"
+          src={`https://www.youtube-nocookie.com/embed/${props.video.id}?autoplay=1`}
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          playsInline="1"
+        ></iframe>
+      </div>
       <div className="video-info">
-        <img src={turntable} className="video-info-left" />
         <div className="video-info-right">
           <div className="video-info-names">
             <h5 className="video-info-title">{props.video.title}</h5>

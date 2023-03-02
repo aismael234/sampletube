@@ -17,9 +17,15 @@ export default function Dropdown() {
         </button>
         {dropDown && (
           <div className="dropdown-content">
-            <Link to="/">Home</Link>
-            <Link to="/about">About</Link>
-            <Link to="/contact">Contact Us</Link>
+            <Link onClick={handleClick} to="/">
+              Home
+            </Link>
+            <Link onClick={handleClick} to="/about">
+              About
+            </Link>
+            <Link onClick={handleClick} to="/contact">
+              Contact Us
+            </Link>
           </div>
         )}
       </div>
