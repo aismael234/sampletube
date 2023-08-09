@@ -27,7 +27,7 @@ export default function Filter(props) {
         </span>
       </h6>
 
-      <h4 style={{ alignSelf: "center", margin: "0", marginBottom: "5px" }}>
+      <h4 style={{ alignSelf: "center", margin: "0", paddingBottom: "5px" }}>
         Filter
       </h4>
       <div className="inputs-container">
@@ -90,6 +90,7 @@ export default function Filter(props) {
             type="reset"
             id="reset"
             name="reset"
+            style={{ fontWeight: "600" }}
             onClick={() => {
               props.handleForm();
               if (props.isValidFilter === false) props.toggleIsValidFilter();
@@ -97,7 +98,11 @@ export default function Filter(props) {
           >
             Reset
           </button>
-          <button id="submit" onClick={handleSubmitBtn}>
+          <button
+            id="submit"
+            style={{ fontWeight: "600" }}
+            onClick={handleSubmitBtn}
+          >
             Sample!
           </button>
         </div>

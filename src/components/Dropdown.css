@@ -2,7 +2,6 @@
 .navbar {
   overflow: hidden;
   font-family: Arial;
-  margin-right: 20px;
 }
 
 /* Links inside the navbar */
@@ -64,9 +63,13 @@
   -o-transition: all 0.5s;
   transition: all 0.5s;
 }
+.dropdown-toggle {
+  float: none;
+  padding: 12px 0px;
+}
 
 /* Add a grey background color to dropdown links on hover */
 .dropdown-content a:hover,
 .dropdown .dropbtn:hover {
-  background-color: var(--background);
+  background-color: var(--background-primary);
 }

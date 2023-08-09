@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Header.css";
 import Dropdown from "./Dropdown";
@@ -13,54 +13,66 @@ export default function Header(props) {
     [navigate]
   );
 
-  const [checked, setChecked] = useState(props.theme == "dark" ? true : false);
+  const dropdownRef = useRef(null);
+  const [showDropdown, setshowDropdown] = useState(false);
 
   useEffect(() => {
-    setChecked(props.theme == "dark" ? true : false);
-  }, [props.theme]);
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setshowDropdown(false);
+      }
+    }
+
+    // Add the event listener
+    document.addEventListener("mousedown", handleClickOutside);
+
+    // Cleanup when component unmounts
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  // Tracks window size to hide dark mode toggle at certain width
+  const [screenWidth, setscreenWidth] = useState(window.innerWidth);
+  useEffect(() => {
+    const updateDimension = () => {
+      setscreenWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", updateDimension);
+
+    return () => {
+      window.removeEventListener("resize", updateDimension);
+    };
+  }, []);
 
   return (
     <header className="header">
       <div className="header-left" onClick={handleClick}>
-        <img src={turntable} className="header-logo" />
+        <img src={turntable} alt="A turntable." className="header-logo" />
         <h3 className="header-name">
           <span className="header-name-sample">Sample</span>Tube
         </h3>
       </div>
       <div className="header-right">
-        <DarkModeToggle
-          onChange={props.toggleTheme}
-          mode={props.theme}
-          dark="Dark"
-          light="Light"
-          size="sm"
-          ariaLabel="Toggle color scheme"
-        />
-        {/* <Switch
-          height={20}
-          width={50}
-          onColor={"#fff"}
-          offColor={"#161616"}
-          handleDiameter={27}
-          onHandleColor={"#161616"}
-          offHandleColor={"#fff"}
-          className="header-theme-toggle"
-          onChange={props.toggleTheme}
-          uncheckedHandleIcon={
-            <SunLogo
-              className="header-icon-sun"
-              style={{ fill: "black", stroke: "black" }}
-            />
-          }
-          checkedHandleIcon={
-            <MoonLogo
-              className="header-icon-moon"
-              style={{ fill: "white", stroke: "white" }}
-            />
-          }
-          checked={checked}
-        /> */}
-        <Dropdown className="header-dropdown" />
+        {screenWidth >= 450 && (
+          <DarkModeToggle
+            onChange={props.toggleTheme}
+            mode={props.theme}
+            dark="Dark"
+            light="Light"
+            size="sm"
+            ariaLabel="Toggle color scheme"
+          />
+        )}
+        <div ref={dropdownRef}>
+          <Dropdown
+            showDropdown={showDropdown}
+            setshowDropdown={setshowDropdown}
+            className="header-dropdown"
+            toggleTheme={props.toggleTheme}
+            mode={props.theme}
+          />
+        </div>
       </div>
     </header>
   );

@@ -1,13 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Dropdown.css";
+import { DarkModeToggle } from "@anatoliygatt/dark-mode-toggle";
 
-export default function Dropdown() {
-  const [dropDown, setDropDown] = useState(false);
-
+export default function Dropdown({ showDropdown, setshowDropdown, ...props }) {
   function handleClick(event) {
-    setDropDown((prevState) => !prevState);
+    setshowDropdown((prevState) => !prevState);
   }
+
+  // Tracks window size to hide dark mode toggle at certain width
+  const [screenWidth, setscreenWidth] = useState(window.innerWidth);
+  useEffect(() => {
+    const updateDimension = () => {
+      setscreenWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", updateDimension);
+
+    return () => {
+      window.removeEventListener("resize", updateDimension);
+    };
+  }, []);
 
   return (
     <div className="navbar">
@@ -15,8 +27,20 @@ export default function Dropdown() {
         <button className="dropbtn" onClick={handleClick}>
           <i className="fa fa-caret-down"></i>
         </button>
-        {dropDown && (
+        {showDropdown && (
           <div className="dropdown-content">
+            {screenWidth < 450 && (
+              <div className="dropdown-toggle">
+                <DarkModeToggle
+                  onChange={props.toggleTheme}
+                  mode={props.mode}
+                  dark="Dark"
+                  light="Light"
+                  size="sm"
+                  ariaLabel="Toggle color scheme"
+                />
+              </div>
+            )}
             <Link onClick={handleClick} to="/">
               Home
             </Link>

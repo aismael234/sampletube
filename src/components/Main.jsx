@@ -96,16 +96,15 @@ export default function Main() {
   }, []);
 
   return (
-    <main>
+    <main className="main">
       <h2 className="description">
         Generate a Random <span className="description-red">Sample.</span>
         <br />
         <span className="description-red">Inspire</span> New Music.
       </h2>
-      <div className="main">
-        <Video className="main-video" video={video} />
+      <div className="container">
+        <Video video={video} />
         <Filter
-          className="main-filter"
           video={video}
           form={form}
           handleForm={() => handleForm(event)}

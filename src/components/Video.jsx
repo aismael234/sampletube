@@ -7,27 +7,31 @@ export default function Video(props) {
         and "allow='autoplay'" attribute.
     */
 
-  let info = {
+  let exampleInfo = {
     title: "Mariya",
     uploader: "Family Circle - Topic",
     view_count: "2,096 views",
     upload_date: "7 years ago",
   };
 
+  const iFrame = () => {
+    return (
+      <iframe
+        id="video"
+        className="video"
+        src={`https://www.youtube-nocookie.com/embed/${props.video.id}?autoplay=1`}
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+        playsInline="1"
+      />
+    );
+  };
+
   return (
     <div className="video-card">
-      <div className="video-container">
-        <iframe
-          id="video"
-          className="video"
-          src={`https://www.youtube-nocookie.com/embed/${props.video.id}?autoplay=1`}
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          playsInline="1"
-        ></iframe>
-      </div>
+      <div className="video-container">{iFrame()}</div>
       <div className="video-info">
         <div className="video-info-right">
           <div className="video-info-names">

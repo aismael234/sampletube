@@ -1,3 +1,10 @@
+.main {
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-top: env(safe-area-inset-top);
+}
+
 .description {
   font-weight: 700;
   text-align: center;
@@ -15,8 +22,9 @@ h2 {
   transition: color 0.5s;
 }
 
-@media screen and (max-width: 649px) {
-  .main {
+@media screen and (max-width: 850px) {
+  .container {
+    width: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -24,12 +32,15 @@ h2 {
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
-    margin-top: 10px;
+    -webkit-row-gap: 10px;
+    -moz-row-gap: 10px;
+    row-gap: 10px;
     margin-left: auto;
     margin-right: auto;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
+    padding: 10px;
   }
 }
 
@@ -39,13 +50,12 @@ h2 {
   }
 }
 
-@media screen and (min-width: 650px) {
-  .main {
+@media screen and (min-width: 850px) {
+  .container {
     width: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
     -webkit-box-pack: center;
@@ -54,6 +64,9 @@ h2 {
     -webkit-column-gap: 20px;
     -moz-column-gap: 20px;
     column-gap: 20px;
+    -webkit-row-gap: 10px;
+    -moz-row-gap: 10px;
+    row-gap: 10px;
     -webkit-box-align: top;
     -ms-flex-align: top;
     align-items: top;
