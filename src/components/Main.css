@@ -70,7 +70,7 @@ h2 {
     -webkit-box-align: top;
     -ms-flex-align: top;
     align-items: top;
-    padding: 10px;
+    padding: 10px 30px;
   }
   .description {
     font-size: 30px;

@@ -11,9 +11,6 @@
   flex-direction: column;
   -ms-flex-item-align: start;
   align-self: flex-start;
-  -webkit-box-align: end;
-  -ms-flex-align: end;
-  align-items: end;
   row-gap: 6px;
   padding: 30px;
   -webkit-box-shadow: 0px 2px 6px var(--box-shadow);
@@ -26,46 +23,35 @@
 }
 
 .inputs-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -ms-flex-item-align: start;
-  align-self: flex-start;
-  -webkit-box-align: end;
-  -ms-flex-align: end;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 5px;
   row-gap: 15px;
   margin: auto;
-}
-
-.input-row {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-column-gap: 5px;
-  -moz-column-gap: 5px;
-  column-gap: 5px;
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 300;
   font-family: "Roboto", "Inter", "Avenir", "Helvetica", "Arial", "sans-serif";
 }
-.input-row input {
+
+.inputs-container input {
   border: none;
   border-radius: 5px;
 }
-.input-row textarea {
+.inputs-container textarea {
   border: none;
   border-radius: 5px;
+}
+.inputs-container label {
+  text-align: right;
+}
+
+.dates-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr;
+  column-gap: 2px;
+}
+.dates-container label {
+  text-align: center;
 }
 
 #keywords {
@@ -75,20 +61,19 @@
 }
 
 .buttons-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
+  -ms-grid-column: 2;
+  grid-column: 2;
+  width: 50%;
+  justify-self: right;
   display: flex;
-  -webkit-column-gap: 25px;
-  -moz-column-gap: 25px;
-  column-gap: 25px;
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
+  flex-direction: row;
   justify-content: flex-end;
-  -webkit-justify-content: flex-end;
+  column-gap: 5px;
   font-weight: 400;
 }
 
 #reset {
+  flex: 1;
   cursor: pointer;
   background: #888888;
   -webkit-box-shadow: 1px 3px 5px var(--box-shadow);
@@ -99,6 +84,7 @@
   color: white;
 }
 #submit {
+  flex: 1;
   cursor: pointer;
   background: #e81c00;
   -webkit-box-shadow: 1px 3px 5px var(--box-shadow);
@@ -134,17 +120,6 @@
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-  }
-}
-
-@media screen and (min-width: 300px) {
-  .input-row {
-    font-size: calc(10px + 2 * ((100vw - 300px) / 300));
-  }
-}
-
-@media screen and (min-width: 850px) {
-  .input-row {
-    font-size: 12px;
+    padding: 20px;
   }
 }
