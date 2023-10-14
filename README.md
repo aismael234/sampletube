@@ -3,5 +3,4 @@ Music production tool that generates a random sample given certain filter parame
 
 ## Demo
 
-https://github.com/aismael234/sampletube-frontend/assets/87450228/a3d72dd2-ea87-476c-a6e2-b4751fd1f3a9
-(https://youtu.be/EyL5CT0M37I?feature=shared)
+https://github.com/aismael234/sampletube-frontend/assets/87450228/b0f97f10-0e2d-4b78-ae45-933e82c9db19
